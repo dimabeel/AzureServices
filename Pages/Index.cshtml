@@ -1,0 +1,53 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Hi. There is an application for test Azure Services. It's nice to meet you here!</p>
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <div class="row align-items-start">
+            <div class="col">
+                <p><b>Azure SQL</b></p>
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-page="/Azure/SQL/Index">Let's try!</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <p><b>FileStorage</b></p>
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-page="/Azure/FileStorage/Blob">Blobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-page="/Azure/FileStorage/Queue">Queues</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <p><b>KeyVault</b></p>
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-page="/Azure/KeyVault/Key">Keys</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-page="/Azure/KeyVault/Secret">Secrets</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <p><b>API</b></p>
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-page="/Cars/Index">Garage</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+</div>

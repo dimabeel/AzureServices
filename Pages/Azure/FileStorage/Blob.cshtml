@@ -1,0 +1,84 @@
+﻿@page
+@model AzureServices.Pages.Azure.Blobs.BlobModel
+@{
+    ViewData["Title"] = "Blobs";
+}
+
+<div class="row justify-content-between">
+    <div class="col-6">
+        <form method="post" asp-page-handler="readBlobs">
+            <div style="padding-top: 10px;" class="row align-items-center">
+                <label class="fw-bold">Read all blobs in blob:</label>
+                <div class="col-auto">
+                    <input class="form-control" name="blobName" placeholder="Write blobName" />
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-success" type="submit">Read</button>
+                </div>
+            </div>
+        </form>
+        <form method="post" asp-page-handler="saveBlobTo">
+            <div style="padding-top: 10px;">
+                <label class="fw-bold">Save blob from:</label>
+                <div class="mb-3">
+                    <input class="form-control" name="blobName" placeholder="Write blobName" />
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="fileName" placeholder="Write fileName" />
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="path" placeholder="Write path" />
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                </div>
+            </div>
+        </form>
+        <form method="post" asp-page-handler="uploadBlob">
+            <div style="padding-top: 10px;">
+                <label class="fw-bold">Upload blob to:</label>
+                <div class="mb-3">
+                    <input class="form-control" name="blobName" placeholder="Write blobName" />
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="fileName" placeholder="Write fileName" />
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="path" placeholder="Write path" />
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit">Upload</button>
+                </div>
+            </div>
+        </form>
+        <form method="post" asp-page-handler="readBlob">
+            <div style="padding-top: 10px;">
+                <label class="fw-bold">Read blob from:</label>
+                <div class="mb-3">
+                    <input class="form-control" name="blobName" placeholder="Write blobName" />
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="fileName" placeholder="Write fileName" />
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit">Read</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <label class="fw-bold">Result:</label>
+            </div>
+            <div class="col-auto">
+                <form method="post" asp-page-handler="reset">
+                    <button class="btn btn-sm btn-warning">Reset</button>
+                </form>
+            </div>
+        </div>
+        <div>
+            @Model.Message
+        </div>
+    </div>
+</div>

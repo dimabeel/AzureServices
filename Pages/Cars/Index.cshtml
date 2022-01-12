@@ -1,0 +1,93 @@
+@page
+@model AzureServices.Pages.Cars.IndexModel
+@{
+    ViewData["Title"] = "Car";
+}
+
+<div class="row justify-content-between">
+    <div class="col-6">
+        <div style="padding-top: 10px;" class="row align-items-center">
+            <div class="col-auto">
+                <form method="post" asp-page-handler="GetAll">
+                    <button class="btn btn-success" type="submit">Get all</button>
+                </form>
+            </div>
+            <div class="col-auto">
+                <form method="post" asp-page-handler="deleteAll">
+                    <button class="btn btn-danger" type="submit">Delete all</button>
+                </form>
+            </div>
+        </div>
+        <form method="get">
+            <div style="padding-top: 10px;" class="row align-items-center">
+                <label class="fw-bold">Get by Id</label>
+                <div class="col-auto">
+                    <input class="form-control" name="id" placeholder="Write id" />
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-success" type="submit">Get</button>
+                </div>
+            </div>
+        </form>
+        <form method="post" asp-page-handler="deleteById">
+            <div style="padding-top: 10px;" class="row align-items-center">
+                <label class="fw-bold">Delete by Id</label>
+                <div class="col-auto">
+                    <input class="form-control" name="id" placeholder="Write id" />
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </div>
+            </div>
+        </form>
+        <form method="post" asp-page-handler="create">
+            <div style="padding-top: 10px;">
+                <label class="fw-bold">Add car to garage</label>
+                <div class="mb-3">
+                    <input class="form-control" name="mark" placeholder="Write car mark" />
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="model" placeholder="Write car model" />
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit">Add</button>
+                </div>
+            </div>
+        </form>
+        <form method="post" asp-page-handler="update">
+            <div style="padding-top: 10px;">
+                <label class="fw-bold">Update car:</label>
+                <div class="mb-3">
+                    <input class="form-control" name="id" placeholder="Write id" />
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="mark" placeholder="Write car mark" />
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="model" placeholder="Write car model" />
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <label class="fw-bold">Result:</label>
+            </div>
+            <div class="col-auto">
+                <form method="post" asp-page-handler="reset">
+                    <button class="btn btn-sm btn-warning">Reset</button>
+                </form>
+            </div>
+        </div>
+        <div>
+            @foreach (var message in @Model.Messages)
+            {
+                <p>@message</p>
+            }
+        </div>
+    </div>
+</div>

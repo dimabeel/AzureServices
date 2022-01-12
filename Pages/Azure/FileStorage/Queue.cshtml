@@ -1,0 +1,95 @@
+﻿@page
+@model AzureServices.Pages.Azure.Queues.QueueModel
+@{
+    ViewData["Title"] = "Queues";
+}
+
+<div class="row justify-content-between">
+    <div class="col-6">
+        <div style="padding-top: 10px;" class="row align-items-center">
+            <label class="fw-bold">Peek:</label>
+            <div class="col-auto">
+                <form method="post" asp-page-handler="peekMessage">
+                    <button class="btn btn-primary" type="submit">Peek message</button>
+                </form>
+            </div>
+            <div class="col-auto">
+                <form method="post" asp-page-handler="peekMessages">
+                    <button class="btn btn-primary" type="submit">Peek messages</button>
+                </form>
+            </div>
+        </div>
+        <div style="padding-top: 10px;" class="row align-items-center">
+            <label class="fw-bold">Receive:</label>
+            <div class="col-auto">
+                <form method="post" asp-page-handler="receiveMessage">
+                    <button class="btn btn-primary" type="submit">Receive message</button>
+                </form>
+            </div>
+            <div class="col-auto">
+                <form method="post" asp-page-handler="receiveMessages">
+                    <button class="btn btn-primary" type="submit">Receive messages</button>
+                </form>
+            </div>
+        </div>
+        <form method="post" asp-page-handler="deleteMessage">
+            <div style="padding-top: 10px;" class="row align-items-center">
+                <label class="fw-bold">Delete:</label>
+                <div class="col-auto">
+                    <input class="form-control" name="messageId" placeholder="Write message id" />
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </div>
+            </div>
+        </form>
+        <form method="post" asp-page-handler="sendMessage">
+            <div style="padding-top: 10px;" class="row align-items-center">
+                <label class="fw-bold">Send message:</label>
+                <div class="col-auto">
+                    <input class="form-control" name="message" placeholder="Write message text" />
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-success" type="submit">Send</button>
+                </div>
+            </div>
+        </form>
+        <form method="post" asp-page-handler="updateMessage">
+            <div style="padding-top: 10px;">
+                <label class="fw-bold">Update message:</label>
+                <div class="mb-3">
+                    <input class="form-control" name="message" placeholder="Write new text" />
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="messageId" placeholder="Write message id" />
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="popReceipt" placeholder="Write message pop receipt" />
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <label class="fw-bold">Result:</label>
+            </div>
+            <div class="col-auto">
+                <form method="post" asp-page-handler="reset">
+                    <button class="btn btn-sm btn-warning">Reset</button>
+                </form>
+            </div>
+            <div class="col-auto">
+                <form method="post" asp-page-handler="clearQueue">
+                    <button class="btn btn-sm btn-danger">Clear queue</button>
+                </form>
+            </div>
+        </div>
+        <div>
+            @Model.Message
+        </div>
+    </div>
+</div>

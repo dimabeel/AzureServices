@@ -1,0 +1,49 @@
+﻿@page
+@model AzureServices.Pages.Azure.AzureSQL.IndexModel
+@{
+    ViewData["Title"] = "Azure SQL";
+}
+
+Work only when get an auth credentials from server. I would like to try using acquired token...
+<div class="row justify-content-between">
+    <div class="col-6">
+        <form method="post" asp-page-handler="query">
+            <div style="padding-top: 10px;">
+                <label class="fw-bold">SQL queries:</label>
+                <div class="mb-3">
+                    <input class="form-control" name="server" placeholder="Server" />
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="dbname" placeholder="Database name" />
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="login" placeholder="Login" />
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="password" type="password" placeholder="Password" />
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" name="query" placeholder="query" />
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <label class="fw-bold">Result:</label>
+            </div>
+            <div class="col-auto">
+                <form method="post" asp-page-handler="reset">
+                    <button class="btn btn-sm btn-warning">Reset</button>
+                </form>
+            </div>
+        </div>
+        <div>
+            @Model.Message
+        </div>
+    </div>
+</div>
